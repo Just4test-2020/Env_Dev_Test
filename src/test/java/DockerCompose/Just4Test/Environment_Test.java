@@ -41,7 +41,6 @@ public class Environment_Test {
 		}
 		
 		driver.quit();
-		tearDown();
 	}
 	
 
@@ -59,24 +58,6 @@ public class Environment_Test {
 		wait.until(ExpectedConditions.elementToBeClickable(link_downloads));
 		driver.findElement(link_downloads).click();
 	}
-	
-	public void tearDown() {
-		  String s = null;
-		  try {
-		    Process p1 = Runtime.getRuntime().exec("docker stop $(docker ps -aq)");
-		    Process p2 = Runtime.getRuntime().exec("docker rm $(docker ps -aq)");
-		    BufferedReader stdInput = new BufferedReader(new InputStreamReader(p1.getInputStream()));
-		    BufferedReader stdError = new BufferedReader(new InputStreamReader(p1.getErrorStream()));
-		    // read the output from the command
-		    System.out.println("Here is the standard output of the command:\n");
-		    while ((s = stdInput.readLine()) != null) {
-		       System.out.println(s);
-		    }
-		  } catch(IOException e) {
-		    e.printStackTrace();
-		  }
-
-		}
 
 	/**
 	 * Initialisation des parametres de configuration et lancement de la navigation
